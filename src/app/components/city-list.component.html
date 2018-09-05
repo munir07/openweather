@@ -1,0 +1,30 @@
+<form #myCityForm="ngForm" (ngSubmit)=addToCity()>
+  <mat-card>
+      <mat-form-field fxLayout="column">
+        <input matInput name="cityNew" placeholder="City" ngModel required>
+        <mat-error>
+          Please enter the city name
+        </mat-error>
+      </mat-form-field>
+      <!-- <div fxLayout="row" fxLayoutAlign="end center" >
+      <button mat-raised-button color="primary" type="submit">
+        <mat-icon>add_box</mat-icon>
+        <span>Add</span>
+      </button>
+      </div> -->
+      <div fxLayoutAlign="end center" fxLayoutGap="10px">
+        <button mat-raised-button color="accent" type="submit" [disabled]="myCityForm.invalid">
+          <mat-icon>add_box</mat-icon>
+          <span>Add</span>
+        </button>
+      </div>
+
+      <mat-list>
+        <mat-list-item *ngFor="let city of cityList">
+          <mat-icon mat-list-icon (click)="displayWeather(city)">location_city</mat-icon>
+          <h4 mat-line (click)="displayWeather(city)">{{city}}</h4>
+        </mat-list-item>
+      </mat-list>
+
+  </mat-card>
+</form>
